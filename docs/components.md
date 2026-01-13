@@ -11,10 +11,10 @@ React components implementing the Aspora design system. All components are built
 
 ```tsx
 // Import individual components
-import { Toggle, Checkbox, RadioButton } from 'aspora-design-system/components';
+import { Toggle, Checkbox, RadioButton, Button } from 'aspora-design-system/components';
 
 // Import types
-import type { ToggleProps, CheckboxSize } from 'aspora-design-system/components';
+import type { ToggleProps, CheckboxSize, ButtonVariant } from 'aspora-design-system/components';
 ```
 
 ## Components
@@ -394,6 +394,59 @@ function RangeExample() {
 |------|-------------|
 | `single` | Single thumb, value from min to selected point |
 | `range` | Two thumbs, selects a range between two points |
+
+---
+
+### Button
+
+A button component with primary and secondary variants.
+
+```tsx
+import { Button } from 'aspora-design-system/components';
+
+function Example() {
+  return (
+    <div style={{ display: 'flex', gap: 16 }}>
+      <Button variant="primary" onClick={() => console.log('Primary clicked')}>
+        Primary Button
+      </Button>
+      <Button variant="secondary" onClick={() => console.log('Secondary clicked')}>
+        Secondary Button
+      </Button>
+      <Button variant="primary" disabled>
+        Disabled
+      </Button>
+    </div>
+  );
+}
+```
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | - | Button content (required) |
+| `variant` | `'primary' \| 'secondary'` | `'primary'` | Button style variant |
+| `disabled` | `boolean` | `false` | Disable interaction |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | HTML button type |
+| `onClick` | `(e: MouseEvent) => void` | - | Click callback |
+| `fullWidth` | `boolean` | `false` | Make button full width |
+| `className` | `string` | `''` | Additional CSS classes |
+
+#### Variants
+
+| Variant | Description |
+|---------|-------------|
+| `primary` | Purple gradient with drop shadow, for main actions |
+| `secondary` | Gray background, for secondary actions |
+
+#### States
+
+| State | Description |
+|-------|-------------|
+| Default | Normal resting state |
+| Pressed | Active/clicked state with darker colors |
+| Disabled | Non-interactive state with reduced opacity |
 
 ---
 

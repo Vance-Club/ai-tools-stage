@@ -32,3 +32,7 @@ export type { SelectorProps, SelectorSize } from './Selector';
 // Range Input
 export { Slider } from './Slider';
 export type { SliderProps, SliderType } from './Slider';
+
+// Buttons
+export { Button } from './Button';
+export type { ButtonProps, ButtonVariant, ButtonState } from './Button';
