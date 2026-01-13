@@ -297,6 +297,106 @@ function Example() {
 
 ---
 
+### Selector
+
+A simple pill-shaped selection button (text-only, similar to Chip but without icon).
+
+```tsx
+import { Selector } from 'aspora-design-system/components';
+
+function Example() {
+  const [selected, setSelected] = useState('monthly');
+
+  return (
+    <div style={{ display: 'flex', gap: 8 }}>
+      <Selector
+        label="Monthly"
+        selected={selected === 'monthly'}
+        onClick={() => setSelected('monthly')}
+      />
+      <Selector
+        label="Yearly"
+        selected={selected === 'yearly'}
+        onClick={() => setSelected('yearly')}
+      />
+    </div>
+  );
+}
+```
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Selector label (required) |
+| `selected` | `boolean` | `false` | Whether selected |
+| `size` | `'large' \| 'medium' \| 'small'` | `'medium'` | Size variant |
+| `disabled` | `boolean` | `false` | Disable interaction |
+| `onClick` | `() => void` | - | Click callback |
+
+---
+
+### Slider
+
+A range slider with single or dual thumb variants.
+
+```tsx
+import { Slider } from 'aspora-design-system/components';
+
+// Single thumb slider
+function SingleExample() {
+  const [value, setValue] = useState(50);
+
+  return (
+    <Slider
+      value={value}
+      onChange={setValue}
+      min={0}
+      max={100}
+      type="single"
+    />
+  );
+}
+
+// Range slider (two thumbs)
+function RangeExample() {
+  const [range, setRange] = useState<[number, number]>([25, 75]);
+
+  return (
+    <Slider
+      rangeValue={range}
+      onRangeChange={setRange}
+      min={0}
+      max={100}
+      type="range"
+    />
+  );
+}
+```
+
+#### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `100` | Maximum value |
+| `step` | `number` | `1` | Step increment |
+| `value` | `number` | `50` | Current value (single slider) |
+| `rangeValue` | `[number, number]` | `[25, 75]` | Current range (range slider) |
+| `type` | `'single' \| 'range'` | `'single'` | Slider type |
+| `disabled` | `boolean` | `false` | Disable interaction |
+| `onChange` | `(value: number) => void` | - | Change callback (single) |
+| `onRangeChange` | `(value: [number, number]) => void` | - | Change callback (range) |
+
+#### Types
+
+| Type | Description |
+|------|-------------|
+| `single` | Single thumb, value from min to selected point |
+| `range` | Two thumbs, selects a range between two points |
+
+---
+
 ## Design Token Integration
 
 All components use the Aspora design tokens for consistent styling:

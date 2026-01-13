@@ -25,3 +25,10 @@ export type { SearchBarProps, SearchBarState } from './SearchBar';
 // Selection
 export { Chip } from './Chip';
 export type { ChipProps, ChipSize, ChipVariant } from './Chip';
+
+export { Selector } from './Selector';
+export type { SelectorProps, SelectorSize } from './Selector';
+
+// Range Input
+export { Slider } from './Slider';
+export type { SliderProps, SliderType } from './Slider';
