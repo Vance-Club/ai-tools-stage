@@ -142,78 +142,71 @@ export const NRICalculator: React.FC = () => {
         .calc-container {
           max-width: 900px;
           margin: 0 auto;
-          padding: 24px 16px;
+          padding: 20px 16px;
         }
 
         @media (max-width: 600px) {
           .calc-container {
-            padding: 16px 12px;
+            padding: 16px;
           }
         }
 
         .calc-header {
           text-align: center;
-          margin-bottom: 24px;
+          margin-bottom: 16px;
         }
 
         @media (max-width: 600px) {
           .calc-header {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
           }
         }
 
         .calc-header h1 {
-          font-size: 24px;
-          font-weight: 700;
+          font: var(--font-heading-h4);
           color: var(--fills-primary-500, #5523B2);
-          margin-bottom: 4px;
-        }
-
-        @media (max-width: 600px) {
-          .calc-header h1 {
-            font-size: 20px;
-          }
+          margin-bottom: 2px;
         }
 
         .calc-header p {
-          font-size: 14px;
+          font: var(--font-body-m-regular);
           color: var(--text-base-500, #666);
         }
 
         .calc-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 20px;
+          gap: 16px;
         }
 
         @media (max-width: 700px) {
           .calc-grid {
             grid-template-columns: 1fr;
-            gap: 16px;
+            gap: 12px;
           }
         }
 
         .calc-card {
           background: white;
-          border-radius: 16px;
-          padding: 20px;
-          box-shadow: 0 2px 16px rgba(85, 35, 178, 0.08);
+          border-radius: 12px;
+          padding: 16px;
+          box-shadow: 0 2px 12px rgba(85, 35, 178, 0.08);
         }
 
         @media (max-width: 600px) {
           .calc-card {
-            padding: 16px;
-            border-radius: 12px;
+            padding: 14px;
+            border-radius: 10px;
           }
         }
 
         .calc-section {
-          margin-bottom: 20px;
+          margin-bottom: 14px;
         }
 
         @media (max-width: 600px) {
           .calc-section {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
           }
         }
 
@@ -222,43 +215,34 @@ export const NRICalculator: React.FC = () => {
         }
 
         .calc-label {
-          font-size: 13px;
-          font-weight: 500;
+          font: var(--font-body-m-medium);
           color: var(--text-base-600, #0E0F11);
           margin-bottom: 8px;
           display: block;
         }
 
         .calc-sublabel {
-          font-size: 12px;
+          font: var(--font-caption-1-regular);
           color: var(--text-base-400, rgba(14, 15, 17, 0.45));
           margin-top: 4px;
         }
 
         .account-toggle {
           display: flex;
-          gap: 8px;
-          flex-wrap: wrap;
+          gap: 6px;
         }
 
         .tenure-display {
-          font-size: 20px;
-          font-weight: 600;
+          font: var(--font-body-xl-semibold);
           color: var(--fills-primary-500, #5523B2);
           text-align: center;
           margin-bottom: 8px;
         }
 
-        @media (max-width: 600px) {
-          .tenure-display {
-            font-size: 18px;
-          }
-        }
-
         .tenure-range {
           display: flex;
           justify-content: space-between;
-          font-size: 11px;
+          font: var(--font-caption-1-regular);
           color: var(--text-base-400, rgba(14, 15, 17, 0.45));
           margin-top: 4px;
         }
@@ -267,10 +251,7 @@ export const NRICalculator: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 12px;
-          background: var(--fills-gray-100, #F2F2F7);
-          border-radius: 10px;
-          gap: 12px;
+          gap: 10px;
         }
 
         .uk-toggle-info {
@@ -279,16 +260,14 @@ export const NRICalculator: React.FC = () => {
         }
 
         .uk-toggle-title {
-          font-size: 13px;
-          font-weight: 500;
+          font: var(--font-body-m-medium);
           color: var(--text-base-600, #0E0F11);
         }
 
         .uk-toggle-desc {
-          font-size: 11px;
+          font: var(--font-caption-1-regular);
           color: var(--text-base-400, rgba(14, 15, 17, 0.45));
           margin-top: 2px;
-          line-height: 1.3;
         }
 
         .results-card {
@@ -298,27 +277,19 @@ export const NRICalculator: React.FC = () => {
 
         .result-hero {
           text-align: center;
-          padding: 16px 0;
+          padding: 12px 0;
           border-bottom: 1px solid rgba(255,255,255,0.15);
-          margin-bottom: 16px;
+          margin-bottom: 12px;
         }
 
         .result-hero-label {
-          font-size: 12px;
+          font: var(--font-caption-1-regular);
           opacity: 0.8;
           margin-bottom: 4px;
         }
 
         .result-hero-value {
-          font-size: 28px;
-          font-weight: 700;
-          letter-spacing: -0.02em;
-        }
-
-        @media (max-width: 600px) {
-          .result-hero-value {
-            font-size: 24px;
-          }
+          font: var(--font-heading-h2);
         }
 
         .result-row {
@@ -334,13 +305,12 @@ export const NRICalculator: React.FC = () => {
         }
 
         .result-row-label {
-          font-size: 12px;
+          font: var(--font-body-m-regular);
           opacity: 0.8;
         }
 
         .result-row-value {
-          font-size: 14px;
-          font-weight: 600;
+          font: var(--font-body-m-bold);
         }
 
         .result-row-value.positive {
@@ -353,15 +323,14 @@ export const NRICalculator: React.FC = () => {
 
         .notional-credit-box {
           background: rgba(255,255,255,0.1);
-          border-radius: 10px;
-          padding: 12px;
-          margin-top: 12px;
+          border-radius: 8px;
+          padding: 10px;
+          margin-top: 10px;
         }
 
         .notional-credit-title {
-          font-size: 12px;
-          font-weight: 600;
-          margin-bottom: 6px;
+          font: var(--font-caption-1-emphasized);
+          margin-bottom: 4px;
           display: flex;
           align-items: center;
           gap: 4px;
@@ -369,65 +338,68 @@ export const NRICalculator: React.FC = () => {
 
         .notional-credit-values {
           display: flex;
-          gap: 12px;
-          margin-bottom: 6px;
+          gap: 10px;
+          margin-bottom: 4px;
         }
 
         .notional-credit-value {
-          font-size: 16px;
-          font-weight: 700;
+          font: var(--font-body-m-bold);
         }
 
         .notional-credit-desc {
-          font-size: 10px;
+          font: var(--font-caption-1-regular);
           opacity: 0.7;
-          line-height: 1.4;
         }
 
         .comparison-section {
-          margin-top: 24px;
+          margin-top: 16px;
         }
 
         @media (max-width: 600px) {
           .comparison-section {
-            margin-top: 16px;
+            margin-top: 12px;
           }
         }
 
         .comparison-title {
-          font-size: 16px;
-          font-weight: 600;
+          font: var(--font-heading-h4);
           color: var(--text-base-600, #0E0F11);
-          margin-bottom: 12px;
+          margin-bottom: 8px;
+        }
+
+        .comparison-table-wrapper {
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          border-radius: 10px;
+          box-shadow: 0 2px 12px rgba(85, 35, 178, 0.06);
         }
 
         .comparison-table {
           width: 100%;
+          min-width: 360px;
           border-collapse: collapse;
           background: white;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 2px 12px rgba(85, 35, 178, 0.06);
         }
 
         .comparison-table th,
         .comparison-table td {
-          padding: 10px 12px;
+          padding: 8px 10px;
           text-align: left;
-          font-size: 13px;
+          font: var(--font-body-m-regular);
+          white-space: nowrap;
         }
 
         @media (max-width: 600px) {
           .comparison-table th,
           .comparison-table td {
-            padding: 8px 8px;
-            font-size: 11px;
+            padding: 6px 8px;
+            font: var(--font-caption-1-regular);
           }
         }
 
         .comparison-table th {
           background: var(--fills-gray-100, #F2F2F7);
-          font-weight: 600;
+          font: var(--font-caption-1-emphasized);
           color: var(--text-base-500, #666);
         }
 
@@ -454,11 +426,10 @@ export const NRICalculator: React.FC = () => {
 
         .comparison-table .rate-badge {
           display: inline-block;
-          padding: 2px 6px;
+          padding: 2px 5px;
           background: var(--fills-gray-200, #E5E5EA);
           border-radius: 4px;
-          font-size: 11px;
-          font-weight: 600;
+          font: var(--font-caption-1-emphasized);
         }
 
         .hero-row .rate-badge {
@@ -467,17 +438,10 @@ export const NRICalculator: React.FC = () => {
         }
 
         .principal-display {
-          font-size: 20px;
-          font-weight: 600;
+          font: var(--font-body-xl-bold);
           color: var(--fills-primary-500, #5523B2);
           text-align: center;
-          margin-bottom: 8px;
-        }
-
-        @media (max-width: 600px) {
-          .principal-display {
-            font-size: 18px;
-          }
+          margin-bottom: 6px;
         }
       `}</style>
 
@@ -495,22 +459,22 @@ export const NRICalculator: React.FC = () => {
               <span className="calc-label">Account Type</span>
               <div className="account-toggle">
                 <Selector
-                  label="NRE Savings Account"
+                  label="NRE Account"
                   selected={accountType === 'NRE'}
                   onClick={() => setAccountType('NRE')}
-                  size="medium"
+                  size="small"
                 />
                 <Selector
-                  label="NRO Savings Account"
+                  label="NRO Account"
                   selected={accountType === 'NRO'}
                   onClick={() => setAccountType('NRO')}
-                  size="medium"
+                  size="small"
                 />
               </div>
               <p className="calc-sublabel">
                 {accountType === 'NRE'
                   ? 'Tax-free in India'
-                  : 'Income generated in India (Rent/Dividends)'}
+                  : 'Indian income (Rent/Dividends)'}
               </p>
             </div>
 
@@ -618,28 +582,30 @@ export const NRICalculator: React.FC = () => {
         {/* Comparison Table */}
         <div className="comparison-section">
           <h2 className="comparison-title">Compare with Other Banks</h2>
-          <table className="comparison-table">
-            <thead>
-              <tr>
-                <th>Bank</th>
-                <th>Rate</th>
-                <th>Interest</th>
-                <th>Maturity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {bankComparisons.map((bank) => (
-                <tr key={bank.name} className={bank.isHero ? 'hero-row' : ''}>
-                  <td className="bank-name">{bank.name}</td>
-                  <td>
-                    <span className="rate-badge">{bank.rate.toFixed(2)}%</span>
-                  </td>
-                  <td>{formatINR(bank.interest)}</td>
-                  <td>{formatINR(bank.maturity)}</td>
+          <div className="comparison-table-wrapper">
+            <table className="comparison-table">
+              <thead>
+                <tr>
+                  <th>Bank</th>
+                  <th>Rate</th>
+                  <th>Interest</th>
+                  <th>Maturity</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {bankComparisons.map((bank) => (
+                  <tr key={bank.name} className={bank.isHero ? 'hero-row' : ''}>
+                    <td className="bank-name">{bank.name}</td>
+                    <td>
+                      <span className="rate-badge">{bank.rate.toFixed(2)}%</span>
+                    </td>
+                    <td>{formatINR(bank.interest)}</td>
+                    <td>{formatINR(bank.maturity)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
