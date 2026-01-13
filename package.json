@@ -1,0 +1,31 @@
+{
+  "name": "aspora-design-system",
+  "version": "1.0.0",
+  "description": "Design tokens and documentation for the Aspora design system, extracted from Figma.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudhanshuverma550/aspora-design-system.git"
+  },
+  "keywords": ["design-system", "aspora", "react", "components"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sudhanshuverma550/aspora-design-system/issues"
+  },
+  "homepage": "https://github.com/sudhanshuverma550/aspora-design-system#readme",
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@types/react": "^19.2.8",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.9",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}
