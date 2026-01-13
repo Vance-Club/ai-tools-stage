@@ -53,15 +53,22 @@ export const NRICalculator: React.FC = () => {
   const [accountType, setAccountType] = useState<'NRE' | 'NRO'>('NRE');
   const [principal, setPrincipal] = useState(500000);
   const [principalInput, setPrincipalInput] = useState('5,00,000');
-  const [years, setYears] = useState(1);
-  const [months, setMonths] = useState(0);
-  const [days, setDays] = useState(0);
+  const [tenureMonths, setTenureMonths] = useState(12); // 3-month quantum, default 1 year
   const [isUKResident, setIsUKResident] = useState(false);
 
-  // Calculate tenure in years
+  // Calculate tenure in years from months
   const tenureInYears = useMemo(() => {
-    return years + (months / 12) + (days / 365);
-  }, [years, months, days]);
+    return tenureMonths / 12;
+  }, [tenureMonths]);
+
+  // Format tenure display
+  const formatTenure = (months: number): string => {
+    const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
+    if (years === 0) return `${remainingMonths} months`;
+    if (remainingMonths === 0) return years === 1 ? '1 year' : `${years} years`;
+    return `${years}y ${remainingMonths}m`;
+  };
 
   // Calculate results
   const results = useMemo(() => {
@@ -124,76 +131,90 @@ export const NRICalculator: React.FC = () => {
     setPrincipalInput(value.toLocaleString('en-IN'));
   };
 
-  // Handle tenure input
-  const handleTenureInput = (
-    setter: React.Dispatch<React.SetStateAction<number>>,
-    max: number
-  ) => (value: string) => {
-    const num = parseInt(value, 10) || 0;
-    setter(Math.min(Math.max(0, num), max));
+  // Handle tenure slider change (3-month quantum)
+  const handleTenureChange = (value: number) => {
+    setTenureMonths(value);
   };
 
   return (
     <>
       <style>{`
         .calc-container {
-          max-width: 1200px;
+          max-width: 900px;
           margin: 0 auto;
-          padding: 40px 24px;
+          padding: 24px 16px;
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 600px) {
           .calc-container {
-            padding: 24px 16px;
+            padding: 16px 12px;
           }
         }
 
         .calc-header {
           text-align: center;
-          margin-bottom: 40px;
+          margin-bottom: 24px;
+        }
+
+        @media (max-width: 600px) {
+          .calc-header {
+            margin-bottom: 16px;
+          }
         }
 
         .calc-header h1 {
-          font-size: 32px;
+          font-size: 24px;
           font-weight: 700;
           color: var(--fills-primary-500, #5523B2);
-          margin-bottom: 8px;
+          margin-bottom: 4px;
+        }
+
+        @media (max-width: 600px) {
+          .calc-header h1 {
+            font-size: 20px;
+          }
         }
 
         .calc-header p {
-          font-size: 16px;
+          font-size: 14px;
           color: var(--text-base-500, #666);
         }
 
         .calc-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 32px;
+          gap: 20px;
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 700px) {
           .calc-grid {
             grid-template-columns: 1fr;
-            gap: 24px;
+            gap: 16px;
           }
         }
 
         .calc-card {
           background: white;
-          border-radius: 24px;
-          padding: 32px;
-          box-shadow: 0 4px 24px rgba(85, 35, 178, 0.08);
+          border-radius: 16px;
+          padding: 20px;
+          box-shadow: 0 2px 16px rgba(85, 35, 178, 0.08);
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 600px) {
           .calc-card {
-            padding: 24px 20px;
-            border-radius: 16px;
+            padding: 16px;
+            border-radius: 12px;
           }
         }
 
         .calc-section {
-          margin-bottom: 28px;
+          margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+          .calc-section {
+            margin-bottom: 16px;
+          }
         }
 
         .calc-section:last-child {
@@ -201,81 +222,73 @@ export const NRICalculator: React.FC = () => {
         }
 
         .calc-label {
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 500;
           color: var(--text-base-600, #0E0F11);
-          margin-bottom: 12px;
+          margin-bottom: 8px;
           display: block;
         }
 
         .calc-sublabel {
-          font-size: 13px;
+          font-size: 12px;
           color: var(--text-base-400, rgba(14, 15, 17, 0.45));
           margin-top: 4px;
         }
 
         .account-toggle {
           display: flex;
-          gap: 12px;
+          gap: 8px;
           flex-wrap: wrap;
         }
 
-        .tenure-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 12px;
-        }
-
-        .tenure-field {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .tenure-field label {
-          font-size: 12px;
-          color: var(--text-base-400, rgba(14, 15, 17, 0.45));
-          margin-bottom: 6px;
-        }
-
-        .tenure-input {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid var(--fills-gray-400, #C7C7CC);
-          border-radius: 12px;
-          font-size: 16px;
-          font-family: 'Inter', sans-serif;
+        .tenure-display {
+          font-size: 20px;
+          font-weight: 600;
+          color: var(--fills-primary-500, #5523B2);
           text-align: center;
-          outline: none;
-          transition: border-color 0.2s;
+          margin-bottom: 8px;
         }
 
-        .tenure-input:focus {
-          border-color: var(--fills-primary-500, #5523B2);
+        @media (max-width: 600px) {
+          .tenure-display {
+            font-size: 18px;
+          }
+        }
+
+        .tenure-range {
+          display: flex;
+          justify-content: space-between;
+          font-size: 11px;
+          color: var(--text-base-400, rgba(14, 15, 17, 0.45));
+          margin-top: 4px;
         }
 
         .uk-toggle-row {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 16px;
+          padding: 12px;
           background: var(--fills-gray-100, #F2F2F7);
-          border-radius: 12px;
+          border-radius: 10px;
+          gap: 12px;
         }
 
         .uk-toggle-info {
           flex: 1;
+          min-width: 0;
         }
 
         .uk-toggle-title {
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 500;
           color: var(--text-base-600, #0E0F11);
         }
 
         .uk-toggle-desc {
-          font-size: 12px;
+          font-size: 11px;
           color: var(--text-base-400, rgba(14, 15, 17, 0.45));
           margin-top: 2px;
+          line-height: 1.3;
         }
 
         .results-card {
@@ -285,26 +298,26 @@ export const NRICalculator: React.FC = () => {
 
         .result-hero {
           text-align: center;
-          padding: 24px 0;
+          padding: 16px 0;
           border-bottom: 1px solid rgba(255,255,255,0.15);
-          margin-bottom: 24px;
+          margin-bottom: 16px;
         }
 
         .result-hero-label {
-          font-size: 14px;
+          font-size: 12px;
           opacity: 0.8;
-          margin-bottom: 8px;
+          margin-bottom: 4px;
         }
 
         .result-hero-value {
-          font-size: 36px;
+          font-size: 28px;
           font-weight: 700;
           letter-spacing: -0.02em;
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 600px) {
           .result-hero-value {
-            font-size: 28px;
+            font-size: 24px;
           }
         }
 
@@ -312,7 +325,7 @@ export const NRICalculator: React.FC = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 12px 0;
+          padding: 8px 0;
           border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -321,12 +334,12 @@ export const NRICalculator: React.FC = () => {
         }
 
         .result-row-label {
-          font-size: 14px;
+          font-size: 12px;
           opacity: 0.8;
         }
 
         .result-row-value {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
         }
 
@@ -340,62 +353,76 @@ export const NRICalculator: React.FC = () => {
 
         .notional-credit-box {
           background: rgba(255,255,255,0.1);
-          border-radius: 12px;
-          padding: 16px;
-          margin-top: 20px;
+          border-radius: 10px;
+          padding: 12px;
+          margin-top: 12px;
         }
 
         .notional-credit-title {
-          font-size: 13px;
+          font-size: 12px;
           font-weight: 600;
-          margin-bottom: 8px;
+          margin-bottom: 6px;
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 4px;
         }
 
         .notional-credit-values {
           display: flex;
-          gap: 16px;
-          margin-bottom: 8px;
+          gap: 12px;
+          margin-bottom: 6px;
         }
 
         .notional-credit-value {
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 700;
         }
 
         .notional-credit-desc {
-          font-size: 11px;
+          font-size: 10px;
           opacity: 0.7;
           line-height: 1.4;
         }
 
         .comparison-section {
-          margin-top: 32px;
+          margin-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+          .comparison-section {
+            margin-top: 16px;
+          }
         }
 
         .comparison-title {
-          font-size: 18px;
+          font-size: 16px;
           font-weight: 600;
           color: var(--text-base-600, #0E0F11);
-          margin-bottom: 16px;
+          margin-bottom: 12px;
         }
 
         .comparison-table {
           width: 100%;
           border-collapse: collapse;
           background: white;
-          border-radius: 16px;
+          border-radius: 12px;
           overflow: hidden;
           box-shadow: 0 2px 12px rgba(85, 35, 178, 0.06);
         }
 
         .comparison-table th,
         .comparison-table td {
-          padding: 14px 16px;
+          padding: 10px 12px;
           text-align: left;
-          font-size: 14px;
+          font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+          .comparison-table th,
+          .comparison-table td {
+            padding: 8px 8px;
+            font-size: 11px;
+          }
         }
 
         .comparison-table th {
@@ -427,10 +454,10 @@ export const NRICalculator: React.FC = () => {
 
         .comparison-table .rate-badge {
           display: inline-block;
-          padding: 4px 8px;
+          padding: 2px 6px;
           background: var(--fills-gray-200, #E5E5EA);
-          border-radius: 6px;
-          font-size: 13px;
+          border-radius: 4px;
+          font-size: 11px;
           font-weight: 600;
         }
 
@@ -439,24 +466,18 @@ export const NRICalculator: React.FC = () => {
           color: white;
         }
 
-        @media (max-width: 600px) {
-          .comparison-table th,
-          .comparison-table td {
-            padding: 12px 10px;
-            font-size: 13px;
-          }
-        }
-
-        .principal-input-wrapper {
-          margin-bottom: 16px;
-        }
-
         .principal-display {
-          font-size: 24px;
+          font-size: 20px;
           font-weight: 600;
           color: var(--fills-primary-500, #5523B2);
           text-align: center;
-          margin-bottom: 12px;
+          margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+          .principal-display {
+            font-size: 18px;
+          }
         }
       `}</style>
 
@@ -474,13 +495,13 @@ export const NRICalculator: React.FC = () => {
               <span className="calc-label">Account Type</span>
               <div className="account-toggle">
                 <Selector
-                  label="NRE SA"
+                  label="NRE Savings Account"
                   selected={accountType === 'NRE'}
                   onClick={() => setAccountType('NRE')}
                   size="medium"
                 />
                 <Selector
-                  label="NRO SA"
+                  label="NRO Savings Account"
                   selected={accountType === 'NRO'}
                   onClick={() => setAccountType('NRO')}
                   size="medium"
@@ -513,40 +534,20 @@ export const NRICalculator: React.FC = () => {
             {/* Tenure */}
             <div className="calc-section">
               <span className="calc-label">Tenure</span>
-              <div className="tenure-grid">
-                <div className="tenure-field">
-                  <label>Years</label>
-                  <input
-                    type="number"
-                    className="tenure-input"
-                    value={years}
-                    onChange={(e) => handleTenureInput(setYears, 10)(e.target.value)}
-                    min={0}
-                    max={10}
-                  />
-                </div>
-                <div className="tenure-field">
-                  <label>Months</label>
-                  <input
-                    type="number"
-                    className="tenure-input"
-                    value={months}
-                    onChange={(e) => handleTenureInput(setMonths, 11)(e.target.value)}
-                    min={0}
-                    max={11}
-                  />
-                </div>
-                <div className="tenure-field">
-                  <label>Days</label>
-                  <input
-                    type="number"
-                    className="tenure-input"
-                    value={days}
-                    onChange={(e) => handleTenureInput(setDays, 30)(e.target.value)}
-                    min={0}
-                    max={30}
-                  />
-                </div>
+              <div className="tenure-display">
+                {formatTenure(tenureMonths)}
+              </div>
+              <Slider
+                value={tenureMonths}
+                onChange={handleTenureChange}
+                min={3}
+                max={120}
+                step={3}
+                type="single"
+              />
+              <div className="tenure-range">
+                <span>3 months</span>
+                <span>10 years</span>
               </div>
             </div>
 
