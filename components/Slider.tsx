@@ -199,9 +199,11 @@ export const Slider: React.FC<SliderProps> = ({
     ? 'var(--fills-primary-300, #A38CE5)'
     : 'var(--fills-primary-500, #5523B2)';
 
-  // Handle track click to jump to position
-  const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  // Handle track click/tap to jump to position
+  const handleTrackInteraction = useCallback((e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     if (disabled) return;
+    e.preventDefault();
+    e.stopPropagation();
 
     const percent = getPositionFromEvent(e);
     const newValue = percentToValue(percent);
@@ -221,7 +223,7 @@ export const Slider: React.FC<SliderProps> = ({
         onRangeChange?.([rangeValue[0], newRight]);
       }
     }
-  };
+  }, [disabled, getPositionFromEvent, percentToValue, type, onChange, onRangeChange, rangeValue, step]);
 
   // Thumb component
   const Thumb: React.FC<{
@@ -236,6 +238,7 @@ export const Slider: React.FC<SliderProps> = ({
     };
 
     const handleTouchStart = (e: React.TouchEvent) => {
+      e.preventDefault();
       e.stopPropagation();
       if (!disabled) onStart();
     };
@@ -307,7 +310,8 @@ export const Slider: React.FC<SliderProps> = ({
       {/* Track */}
       <div
         ref={trackRef}
-        onClick={handleTrackClick}
+        onClick={handleTrackInteraction}
+        onTouchStart={handleTrackInteraction}
         style={{
           position: 'relative',
           width: '100%',
@@ -315,6 +319,7 @@ export const Slider: React.FC<SliderProps> = ({
           backgroundColor: trackBg,
           borderRadius: 2,
           cursor: disabled ? 'not-allowed' : 'pointer',
+          touchAction: 'none',
         }}
       >
         {/* Filled portion */}
