@@ -1,60 +1,144 @@
 /**
  * Aspora Design System - Color Tokens
  * Source: Figma Aspora Component Library
+ * Last Updated: 18th November 2025
  */
 
 :root {
-  /* ===== Surface/Background Colors ===== */
-  --surface-base-level-0: #111111;
-  --surface-base-level-2: #222222;
-  --fills-surface-gray-5: #e5e5ea;
+  /* ===================================================
+     UTILITY COLORS
+     Base color palette for semantic usage
+     =================================================== */
 
-  /* ===== Text Colors ===== */
-  --text-normal-white: #f9f9f9;
-  --text-base-white: #f9f9f9;
-  --text-base-light-1: #d5d6de;
-  --text-base-light-2: #abacb6;
-  --text-primary-original: #81ebab;
-  --text-negative-dark-1: #ec6172;
-  --label-color-dark-primary: #ffffff;
+  /* Utility/Green */
+  --utility-green-200: #188B33;
+  --utility-green-100: #21BD45;
+  --utility-green-50: rgba(33, 189, 69, 0.5);
+  --utility-green-20: rgba(33, 189, 69, 0.2);
+  --utility-green-10: rgba(33, 189, 69, 0.1);
+
+  /* Utility/Red */
+  --utility-red-100: #F71D11;
+  --utility-red-50: rgba(255, 59, 48, 0.5);
+  --utility-red-20: rgba(255, 59, 48, 0.2);
+  --utility-red-10: rgba(255, 59, 48, 0.1);
+  --utility-red-5: rgba(255, 59, 48, 0.05);
+
+  /* Utility/Orange */
+  --utility-orange-200: #DF7727;
+  --utility-orange-100: #ECA53A;
+  --utility-orange-75: #FFD871;
+  --utility-orange-50: rgba(236, 165, 58, 0.5);
+  --utility-orange-20: rgba(236, 165, 58, 0.2);
+  --utility-orange-10: rgba(236, 165, 58, 0.1);
+
+  /* Utility/Blue */
+  --utility-blue-100: #4A5DF9;
+  --utility-blue-50: rgba(74, 93, 249, 0.5);
+  --utility-blue-20: rgba(74, 93, 249, 0.2);
+  --utility-blue-10: rgba(74, 93, 249, 0.1);
+
+  /* ===================================================
+     FILLS / SURFACE COLORS
+     Background and surface colors
+     =================================================== */
+
+  /* Fills/Base/Gray (Light to Dark) */
+  --fills-gray-50: #F7F7FA;
+  --fills-gray-100: #F2F2F7;
+  --fills-gray-200: #E5E5EA;
+  --fills-gray-300: #D1D1D6;
+  --fills-gray-400: #C7C7CC;
+  --fills-gray-500: #AEAEB2;
+  --fills-gray-600: #8E8E93;
+  --fills-gray-700: #0E0F11;
+
+  /* Fills/Base/Primary (Aspora Purple) */
+  --fills-primary-100: rgba(85, 35, 178, 0.1);
+  --fills-primary-200: rgba(85, 35, 178, 0.2);
+  --fills-primary-250: #CAC0FF;
+  --fills-primary-300: #A38CE5;
+  --fills-primary-400: #7C57CC;
+  --fills-primary-500: #5523B2;
+  --fills-primary-600: #411B88;
+  --fills-primary-700: #2B0C6E;
+  --fills-primary-800: #16004C;
+
+  /* ===================================================
+     TEXT COLORS
+     =================================================== */
+
+  /* Text/Base */
+  --text-base-400: rgba(14, 15, 17, 0.45);
+  --text-base-500: rgba(14, 15, 17, 0.65);
+  --text-base-600: #0E0F11;
+  --text-base-info: #4A5DF9;
+  --text-base-accent: #4A5DF9;
+  --text-base-danger: #F71D11;
+  --text-base-warning: #DF7727;
+  --text-base-success: #188B33;
+
+  /* Text/Contrast (for dark backgrounds) */
+  --text-contrast-400: rgba(255, 255, 255, 0.45);
+  --text-contrast-500: rgba(255, 255, 255, 0.65);
+  --text-contrast-600: rgba(255, 255, 255, 0.6);
+  --text-contrast-700: #FFFFFF;
+
+  /* ===================================================
+     SEMANTIC ALIASES
+     Use these for consistent semantic meaning
+     =================================================== */
+
+  /* Semantic Colors */
+  --color-success: var(--utility-green-100);
+  --color-success-dark: var(--utility-green-200);
+  --color-error: var(--utility-red-100);
+  --color-warning: var(--utility-orange-100);
+  --color-warning-dark: var(--utility-orange-200);
+  --color-info: var(--utility-blue-100);
+  --color-primary: var(--fills-primary-500);
+  --color-primary-light: var(--fills-primary-250);
+
+  /* Surface Colors */
+  --surface-base: var(--fills-gray-700);
+  --surface-elevated: var(--fills-gray-600);
+  --surface-light: var(--fills-gray-100);
+  --surface-white: #FFFFFF;
+  --surface-black: #000000;
+
+  /* Border Colors */
+  --border-light: var(--fills-gray-300);
+  --border-dark: var(--fills-gray-600);
+
+  /* ===================================================
+     LEGACY ALIASES (for backward compatibility)
+     =================================================== */
+  --surface-base-level-0: #0E0F11;
+  --surface-base-level-2: var(--fills-gray-600);
+  --text-normal-white: #FFFFFF;
   --text-black: #000000;
-
-  /* ===== Border Colors ===== */
-  --border-basic-gray-2: #333333;
-  --border-basic-gray-3: #222222;
-  --border-separator: #d1d1d6;
-
-  /* ===== Semantic Colors ===== */
-  --color-success: #81ebab;
-  --color-error: #ec6172;
-  --color-primary: #81ebab;
-
-  /* ===== Component-Specific Colors ===== */
-  --button-primary-bg: transparent;
-  --button-primary-border: #ec6172;
-  --button-primary-text: #ec6172;
-
-  --input-bg: #222222;
-  --input-text: #f9f9f9;
-  --input-label: #81ebab;
-  --input-placeholder: #abacb6;
-
-  --card-bg: #222222;
-  --card-border: #333333;
-
-  /* ===== iOS Status Bar ===== */
-  --status-bar-text: #ffffff;
-  --home-indicator-dark: #000000;
-  --home-indicator-light: #ffffff;
 }
 
-/* Dark theme (default) */
+/* ===================================================
+   THEME: LIGHT MODE
+   =================================================== */
+[data-theme="light"],
+.theme-light {
+  --surface-base: var(--fills-gray-100);
+  --surface-elevated: #FFFFFF;
+  --text-primary: var(--text-base-600);
+  --text-secondary: var(--text-base-500);
+  --text-tertiary: var(--text-base-400);
+}
+
+/* ===================================================
+   THEME: DARK MODE
+   =================================================== */
 [data-theme="dark"],
 .theme-dark {
-  --surface-base-level-0: #111111;
-  --surface-base-level-2: #222222;
-  --text-normal-white: #f9f9f9;
-  --text-base-light-1: #d5d6de;
-  --text-base-light-2: #abacb6;
-  --border-basic-gray-2: #333333;
+  --surface-base: var(--fills-gray-700);
+  --surface-elevated: var(--fills-gray-600);
+  --text-primary: var(--text-contrast-700);
+  --text-secondary: var(--text-contrast-500);
+  --text-tertiary: var(--text-contrast-400);
 }
