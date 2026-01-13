@@ -1,0 +1,222 @@
+/**
+ * Aspora Design System - Typography Tokens
+ * Source: Figma Aspora Component Library
+ * Font Family: Inter
+ */
+
+:root {
+  /* ===== Font Family ===== */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-system: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ===== Font Weights ===== */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ===== Font Sizes ===== */
+  --font-size-display-l: 40px;
+  --font-size-h1: 28px;
+  --font-size-h2: 24px;
+  --font-size-h3: 22px;
+  --font-size-h4: 20px;
+  --font-size-body-xl: 17px;
+  --font-size-body-l: 16px;
+  --font-size-button-l: 15px;
+  --font-size-body-m: 14px;
+  --font-size-footnote: 13px;
+  --font-size-caption-1: 12px;
+  --font-size-caption-2: 11px;
+
+  /* ===== Line Heights ===== */
+  --line-height-tight: 1;
+  --line-height-button: 1.1;
+  --line-height-normal: 1.3;
+  --line-height-relaxed: 1.4;
+
+  /* ===== Letter Spacing ===== */
+  --letter-spacing-tight: -2%;
+  --letter-spacing-normal: -1.5%;
+  --letter-spacing-loose: -1%;
+  --letter-spacing-display: -1.25%;
+
+  /* ===== Display Styles ===== */
+  --font-display-l-emphasized: 700 40px/1 var(--font-family-primary);
+  --font-display-l-semibold: 600 40px/1 var(--font-family-primary);
+
+  /* ===== Heading Styles ===== */
+  --font-heading-h1: 700 28px/1.3 var(--font-family-primary);
+  --font-heading-h2: 700 24px/1.3 var(--font-family-primary);
+  --font-heading-h3: 700 22px/1.3 var(--font-family-primary);
+  --font-heading-h4: 700 20px/1.3 var(--font-family-primary);
+
+  /* ===== Body XL Styles ===== */
+  --font-body-xl-regular: 400 17px/1.3 var(--font-family-primary);
+  --font-body-xl-medium: 500 17px/1.3 var(--font-family-primary);
+  --font-body-xl-semibold: 600 17px/1.3 var(--font-family-primary);
+  --font-body-xl-bold: 700 17px/1.3 var(--font-family-primary);
+
+  /* ===== Body L Styles ===== */
+  --font-body-l-regular: 400 16px/1.3 var(--font-family-primary);
+  --font-body-l-medium: 500 16px/1.3 var(--font-family-primary);
+  --font-body-l-bold: 700 16px/1.3 var(--font-family-primary);
+
+  /* ===== Body M Styles ===== */
+  --font-body-m-regular: 400 14px/1.4 var(--font-family-primary);
+  --font-body-m-medium: 500 14px/1.4 var(--font-family-primary);
+  --font-body-m-bold: 700 14px/1.4 var(--font-family-primary);
+
+  /* ===== Footnote Styles ===== */
+  --font-footnote-regular: 400 13px/1.3 var(--font-family-primary);
+  --font-footnote-emphasized: 700 13px/1.3 var(--font-family-primary);
+
+  /* ===== Caption 1 Styles ===== */
+  --font-caption-1-regular: 400 12px/1.4 var(--font-family-primary);
+  --font-caption-1-emphasized: 700 12px/1.4 var(--font-family-primary);
+
+  /* ===== Caption 2 Styles ===== */
+  --font-caption-2-regular: 400 11px/1.3 var(--font-family-primary);
+  --font-caption-2-emphasized: 700 11px/1.3 var(--font-family-primary);
+
+  /* ===== Button Styles ===== */
+  --font-button-l: 600 15px/1.1 var(--font-family-primary);
+  --font-button-m: 600 14px/1.1 var(--font-family-primary);
+  --font-button-s: 600 12px/1.1 var(--font-family-primary);
+}
+
+/* ===== Typography Utility Classes ===== */
+
+/* Display */
+.text-display-l-emphasized {
+  font: var(--font-display-l-emphasized);
+  letter-spacing: -1.5%;
+}
+
+.text-display-l-semibold {
+  font: var(--font-display-l-semibold);
+  letter-spacing: -1.25%;
+}
+
+/* Headings */
+.text-h1 {
+  font: var(--font-heading-h1);
+  letter-spacing: -1.5%;
+}
+
+.text-h2 {
+  font: var(--font-heading-h2);
+  letter-spacing: -1.5%;
+}
+
+.text-h3 {
+  font: var(--font-heading-h3);
+  letter-spacing: -2%;
+}
+
+.text-h4 {
+  font: var(--font-heading-h4);
+  letter-spacing: -1.5%;
+}
+
+/* Body XL */
+.text-body-xl-regular {
+  font: var(--font-body-xl-regular);
+  letter-spacing: -1%;
+}
+
+.text-body-xl-medium {
+  font: var(--font-body-xl-medium);
+  letter-spacing: -1%;
+}
+
+.text-body-xl-semibold {
+  font: var(--font-body-xl-semibold);
+  letter-spacing: -1%;
+}
+
+.text-body-xl-bold {
+  font: var(--font-body-xl-bold);
+  letter-spacing: -1%;
+}
+
+/* Body L */
+.text-body-l-regular {
+  font: var(--font-body-l-regular);
+  letter-spacing: -1%;
+}
+
+.text-body-l-medium {
+  font: var(--font-body-l-medium);
+  letter-spacing: -1%;
+}
+
+.text-body-l-bold {
+  font: var(--font-body-l-bold);
+  letter-spacing: -1%;
+}
+
+/* Body M */
+.text-body-m-regular {
+  font: var(--font-body-m-regular);
+  letter-spacing: -1%;
+}
+
+.text-body-m-medium {
+  font: var(--font-body-m-medium);
+  letter-spacing: -1%;
+}
+
+.text-body-m-bold {
+  font: var(--font-body-m-bold);
+  letter-spacing: -1%;
+}
+
+/* Footnote */
+.text-footnote-regular {
+  font: var(--font-footnote-regular);
+  letter-spacing: -1%;
+}
+
+.text-footnote-emphasized {
+  font: var(--font-footnote-emphasized);
+  letter-spacing: -1%;
+}
+
+/* Caption 1 */
+.text-caption-1-regular {
+  font: var(--font-caption-1-regular);
+  letter-spacing: -1%;
+}
+
+.text-caption-1-emphasized {
+  font: var(--font-caption-1-emphasized);
+  letter-spacing: -1%;
+}
+
+/* Caption 2 */
+.text-caption-2-regular {
+  font: var(--font-caption-2-regular);
+  letter-spacing: -1%;
+}
+
+.text-caption-2-emphasized {
+  font: var(--font-caption-2-emphasized);
+  letter-spacing: -1%;
+}
+
+/* Buttons */
+.text-button-l {
+  font: var(--font-button-l);
+  letter-spacing: -1%;
+}
+
+.text-button-m {
+  font: var(--font-button-m);
+  letter-spacing: -1%;
+}
+
+.text-button-s {
+  font: var(--font-button-s);
+  letter-spacing: -1%;
+}

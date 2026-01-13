@@ -1,0 +1,60 @@
+/**
+ * Aspora Design System - Color Tokens
+ * Source: Figma Aspora Component Library
+ */
+
+:root {
+  /* ===== Surface/Background Colors ===== */
+  --surface-base-level-0: #111111;
+  --surface-base-level-2: #222222;
+  --fills-surface-gray-5: #e5e5ea;
+
+  /* ===== Text Colors ===== */
+  --text-normal-white: #f9f9f9;
+  --text-base-white: #f9f9f9;
+  --text-base-light-1: #d5d6de;
+  --text-base-light-2: #abacb6;
+  --text-primary-original: #81ebab;
+  --text-negative-dark-1: #ec6172;
+  --label-color-dark-primary: #ffffff;
+  --text-black: #000000;
+
+  /* ===== Border Colors ===== */
+  --border-basic-gray-2: #333333;
+  --border-basic-gray-3: #222222;
+  --border-separator: #d1d1d6;
+
+  /* ===== Semantic Colors ===== */
+  --color-success: #81ebab;
+  --color-error: #ec6172;
+  --color-primary: #81ebab;
+
+  /* ===== Component-Specific Colors ===== */
+  --button-primary-bg: transparent;
+  --button-primary-border: #ec6172;
+  --button-primary-text: #ec6172;
+
+  --input-bg: #222222;
+  --input-text: #f9f9f9;
+  --input-label: #81ebab;
+  --input-placeholder: #abacb6;
+
+  --card-bg: #222222;
+  --card-border: #333333;
+
+  /* ===== iOS Status Bar ===== */
+  --status-bar-text: #ffffff;
+  --home-indicator-dark: #000000;
+  --home-indicator-light: #ffffff;
+}
+
+/* Dark theme (default) */
+[data-theme="dark"],
+.theme-dark {
+  --surface-base-level-0: #111111;
+  --surface-base-level-2: #222222;
+  --text-normal-white: #f9f9f9;
+  --text-base-light-1: #d5d6de;
+  --text-base-light-2: #abacb6;
+  --border-basic-gray-2: #333333;
+}
