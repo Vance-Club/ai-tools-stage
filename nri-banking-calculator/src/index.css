@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import "../../tokens/colors.css";
+@import "../../tokens/typography.css";
+@import "../../tokens/spacing.css";
+
+@theme {
+  /* Map Tailwind colors to Aspora Tokens */
+  --color-primary: var(--fills-primary-500);
+  --color-primary-light: var(--fills-primary-250);
+  --color-primary-dark: var(--fills-primary-700);
+
+  --color-surface: var(--surface-base);
+  --color-surface-elevated: var(--surface-elevated);
+
+  --color-success: var(--utility-green-100);
+  --color-error: var(--utility-red-100);
+  --color-warning: var(--utility-orange-100);
+  --color-info: var(--utility-blue-100);
+
+  /* Text Colors */
+  --color-content-primary: var(--text-primary);
+  --color-content-secondary: var(--text-secondary);
+  --color-content-tertiary: var(--text-tertiary);
+
+  /* Legacy mappings to keep initial refactor smooth, can be deprecated later */
+  --color-deep-purple: var(--fills-primary-700);
+  --color-light-lavender: var(--fills-primary-100);
+
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Custom Base Styles */
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--text-base-600);
+    font-family: var(--font-sans);
+  }
+}

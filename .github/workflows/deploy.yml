@@ -27,11 +27,24 @@ jobs:
           node-version: "20"
           cache: npm
 
-      - name: Install dependencies
+      - name: Install dependencies (main site)
         run: npm ci
 
       - name: Build Astro site
         run: npm run build
+
+      - name: Install dependencies (calculator)
+        working-directory: ./nri-banking-calculator
+        run: npm ci
+
+      - name: Build calculator
+        working-directory: ./nri-banking-calculator
+        run: npm run build
+
+      - name: Copy calculator build to dist
+        run: |
+          mkdir -p ./dist/nri-banking-calculator
+          cp -r ./nri-banking-calculator/dist/* ./dist/nri-banking-calculator/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
